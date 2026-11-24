@@ -1,0 +1,22 @@
+﻿@page "/"
+@inject IJSRuntime JS
+
+<PageTitle>3D Физика</PageTitle>
+
+<!-- Контейнер для 3D-сцены -->
+<div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></div>
+
+<!--
+  Блок с текстом "Виртуальная лаборатория" удален.
+  Если захочешь вернуть подсказки, лучше сделать их в виде выезжающей панели (GUI).
+-->
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            await Task.Delay(100);
+            await JS.InvokeVoidAsync("initSignalGenerator");
+        }
+    }
+}

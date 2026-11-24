@@ -1,0 +1,20 @@
+﻿@page "/lab"
+@inject IJSRuntime JS
+
+<div class="lab-container">
+    <div id="canvas-container" style="width: 100%; height: 600px; border: 1px solid #ccc; border-radius: 8px;"></div>
+</div>
+
+@code {
+    protected override async Task OnAfterRenderAsync(bool firstRender)
+    {
+        if (firstRender)
+        {
+            // Ждем немного, чтобы DOM гарантированно загрузился
+            await Task.Delay(100);
+
+            // Вызываем JS функцию инициализации
+            await JS.InvokeVoidAsync("initSignalGenerator");
+        }
+    }
+}

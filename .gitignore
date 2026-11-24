@@ -1,0 +1,82 @@
+# Local notes and prompts
+Promts/
+Prompts/
+
+# Build results
+[Bb]in/
+[Oo]bj/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+bld/
+[Ll]og/
+[Ll]ogs/
+
+# Visual Studio
+.vs/
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.userprefs
+
+# Rider / VS Code
+.idea/
+.vscode/
+*.sln.iml
+
+# NuGet
+*.nupkg
+*.snupkg
+**/[Pp]ackages/*
+!**/[Pp]ackages/build/
+*.nuget.props
+*.nuget.targets
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# .NET
+*.dll
+*.exe
+*.pdb
+*.cache
+*.log
+*.vspscc
+*.vssscc
+.builds
+*.pidb
+*.svclog
+*.scc
+
+# Test and coverage
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+*.coverage
+*.coveragexml
+coverage*.json
+coverage*.xml
+
+# Publish
+publish/
+*.pubxml
+*.publishproj
+
+# Secrets
+*.env
+.env.*
+appsettings.*.local.json
+secrets.json
+*.pfx
+*.p12
+
+# OS
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
