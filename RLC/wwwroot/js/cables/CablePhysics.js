@@ -3,8 +3,8 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 
 export const CABLE_SETTINGS = {
     radius: 0.2,
-    radialSegments: 12,
-    visualPoints: 40,
+    radialSegments: 8,
+    visualPoints: 15,
     // Насколько длинный провод может быть относительно прямого. Это потолок, не пружина.
     slackShort: 1.045,
     slackLong: 1.1,
@@ -30,7 +30,7 @@ function getCableMaterial() {
     const loader = new THREE.TextureLoader();
     const path = 'models/textures/';
     const colorMap = loader.load(path + 'metal_0040_color_1k.jpg');
-    const normalMap = loader.load(path + 'metal_0040_normal_opengl_1k.png');
+    const normalMap = loader.load(path + 'metal_0040_normal_opengl_1k.jpg');
     const roughnessMap = loader.load(path + 'metal_0040_roughness_1k.jpg');
     const metalnessMap = loader.load(path + 'metal_0040_metallic_1k.jpg');
     for (const tex of [colorMap, normalMap, roughnessMap, metalnessMap]) {
@@ -230,6 +230,7 @@ export class CablePhysics {
         this.id = 0;
         this.asleep = false;
         this.quiet = 0;
+        this._syncFrame = 0;
         this.endInset = CABLE_SETTINGS.endInset;
 
         const straight = Math.max(startPos.distanceTo(endPos), 0.5);
@@ -335,6 +336,8 @@ export class CablePhysics {
     }
 
     syncMesh() {
+        this._syncFrame = (this._syncFrame + 1) % 2;
+        if (this._syncFrame !== 0) return;
         this.#buildVisual();
         this.conformVisual?.(this);
         updateTube(this.geometry, this.visualPoints, this.radius, this.radialSegments);

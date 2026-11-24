@@ -61,7 +61,7 @@ export class GeneratorDevice {
 
         // Загрузка текстуры для кнопок
         const textureLoader = new THREE.TextureLoader();
-        textureLoader.load('models/textures/Base_Button_2.png', (tex) => {
+        textureLoader.load('models/textures/Base_Button_2.jpg', (tex) => {
             tex.colorSpace = THREE.SRGBColorSpace;
             tex.flipY = false;
             this.buttons.setActiveTexture(tex);
