@@ -17,6 +17,7 @@ export class SimulationManager {
         this.lastTime = performance.now();
         this.probeOverride = null;
         this.reading = null;
+        this._oscFrame = 0;
     }
 
     getCH1Source() {
@@ -88,22 +89,23 @@ export class SimulationManager {
         }
 
         if (this.oscilloscope?.display) {
-            const waveType = this.generator.buttons.activeWaveform;
-            const voltsPerDiv = this.oscilloscope.getVoltsPerDiv();
-            const periodsToShow = this.oscilloscope.getPeriodsToShow();
-
-            this.oscilloscope.display.isRunning = this.oscilloscope.isRunning;
-
-            this.oscilloscope.display.draw(
-                Em, displayAmp, displayPhase, f,
-                ch2Label,
-                hasCH1,
-                this.oscilloscope.showCH1,
-                this.oscilloscope.showCH2,
-                this.oscilloscope.showMeasurements,
-                this.animationTime, this.oscilloscope.autoScale,
-                voltsPerDiv, periodsToShow, waveType
-            );
+            this._oscFrame = (this._oscFrame + 1) % 3;
+            if (this._oscFrame === 0) {
+                const waveType = this.generator.buttons.activeWaveform;
+                const voltsPerDiv = this.oscilloscope.getVoltsPerDiv();
+                const periodsToShow = this.oscilloscope.getPeriodsToShow();
+                this.oscilloscope.display.isRunning = this.oscilloscope.isRunning;
+                this.oscilloscope.display.draw(
+                    Em, displayAmp, displayPhase, f,
+                    ch2Label,
+                    hasCH1,
+                    this.oscilloscope.showCH1,
+                    this.oscilloscope.showCH2,
+                    this.oscilloscope.showMeasurements,
+                    this.animationTime, this.oscilloscope.autoScale,
+                    voltsPerDiv, periodsToShow, waveType
+                );
+            }
         }
 
         this.reading = {
