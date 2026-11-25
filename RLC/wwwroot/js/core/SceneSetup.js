@@ -41,7 +41,7 @@ export class SceneSetup {
         renderer.setSize(window.innerWidth, window.innerHeight);
         renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
         renderer.shadowMap.enabled = true;
-        renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+        renderer.shadowMap.type = THREE.PCFShadowMap;
         renderer.outputColorSpace = THREE.SRGBColorSpace;
         return renderer;
     }
@@ -68,7 +68,7 @@ export class SceneSetup {
         const dirLight = new THREE.DirectionalLight(0xffffff, 1.6);
         dirLight.position.set(4, 9, 6);
         dirLight.castShadow = true;
-        dirLight.shadow.mapSize.set(2048, 2048);
+        dirLight.shadow.mapSize.set(1024, 1024);
         dirLight.shadow.radius = 2;
         dirLight.shadow.bias = -0.00015;
         dirLight.shadow.normalBias = 0.02;
