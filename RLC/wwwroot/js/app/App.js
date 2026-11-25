@@ -105,5 +105,11 @@ export class App {
         } catch (err) {
             console.error('Панель лаборатории не запустилась', err);
         }
+
+        await Promise.race([
+            loop.waitForFrame(),
+            new Promise((resolve) => setTimeout(resolve, 1500)),
+        ]);
+        await new Promise((resolve) => requestAnimationFrame(resolve));
     }
 }

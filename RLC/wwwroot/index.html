@@ -21,13 +21,15 @@
 </head>
 
 <body>
-    <div id="app">
+    <div id="boot-overlay" class="boot-overlay" aria-live="polite">
         <svg class="loading-progress">
             <circle r="40%" cx="50%" cy="50%" />
             <circle r="40%" cx="50%" cy="50%" />
         </svg>
         <div class="loading-progress-text"></div>
+        <div class="loading-status" id="boot-status"></div>
     </div>
+    <div id="app"></div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.

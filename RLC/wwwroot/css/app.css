@@ -41,6 +41,28 @@
         content: "An error has occurred."
     }
 
+html, body {
+    margin: 0;
+    background: #1c1f26;
+    color: #e8e8e8;
+}
+
+.boot-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: #1c1f26;
+    color: #e8e8e8;
+    transition: opacity 0.2s ease;
+}
+
+    .boot-overlay.is-done,
+    html.scene-ready .boot-overlay {
+        opacity: 0;
+        pointer-events: none;
+        visibility: hidden;
+    }
+
 .loading-progress {
     position: absolute;
     display: block;
@@ -74,6 +96,14 @@
     .loading-progress-text:after {
         content: var(--blazor-load-percentage-text, "Loading");
     }
+
+.loading-status {
+    position: absolute;
+    text-align: center;
+    inset: calc(20vh + 5.25rem) 1rem auto 1rem;
+    font-size: 0.95rem;
+    color: #9aa3b2;
+}
 
 code {
     color: #c02d76;

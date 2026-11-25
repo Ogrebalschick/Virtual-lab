@@ -3,8 +3,16 @@
 
 <PageTitle>3D Физика</PageTitle>
 
-<!-- Контейнер для 3D-сцены -->
-<div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1;"></div>
+<div class="boot-overlay" aria-live="polite" style="--blazor-load-percentage: 100%; --blazor-load-percentage-text: '100%';">
+    <svg class="loading-progress">
+        <circle r="40%" cx="50%" cy="50%" />
+        <circle r="40%" cx="50%" cy="50%" />
+    </svg>
+    <div class="loading-progress-text"></div>
+    <div class="loading-status">Инициализация сцены...</div>
+</div>
+
+<div id="canvas-container" style="position: fixed; top: 0; left: 0; width: 100vw; height: 100vh; z-index: -1; background: #1c1f26;"></div>
 
 <!--
   Блок с текстом "Виртуальная лаборатория" удален.
