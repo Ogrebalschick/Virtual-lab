@@ -38,7 +38,7 @@ function getCableMaterial() {
         tex.wrapT = THREE.RepeatWrapping;
         tex.repeat.set(0.3, 14);
         tex.rotation = 85 * Math.PI / 180;
-        tex.anisotropy = 8;
+        tex.anisotropy = 4;
     }
     colorMap.colorSpace = THREE.SRGBColorSpace;
     sharedMaterial = new THREE.MeshStandardMaterial({
